@@ -13,6 +13,8 @@ import json
 
 from pathlib import Path
 
+import timeline.apps
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'timeline.apps.TimelineConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,13 +84,13 @@ WSGI_APPLICATION = 'history-timeline.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'OPTIONS': {
-            'service': 'timeline_pg_service',
-            'passfile': '.my_pgpass',
-        },
-        'NAME': BASE_DIR / 'historytimeline.db',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
+        # 'OPTIONS': {
+        #     'service': 'timeline_pg_service',
+        #     'passfile': '.my_pgpass',
+        # },
+        'NAME': 'historytimeline',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
