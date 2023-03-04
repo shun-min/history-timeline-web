@@ -1,0 +1,8 @@
+.idea/
+LICENSE
+db.sqlite3
+.pg_service.conf
+.my_pgpass
+
+timeline/__pycache__
+timeline/migrations
