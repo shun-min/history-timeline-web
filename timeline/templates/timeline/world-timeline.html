@@ -145,7 +145,7 @@ body {
     {% for e in events %}
       <div class="container left">
         <div class="content">
-          <li><a href="/timeline/{{% url 'detail' e.pk %}}/">{{e.name}}</a>
+          <li><a href="{% url 'timeline:detail' e.pk %}">{{e.name}}</a>
         </div>
       </div>
     {% endfor %}
