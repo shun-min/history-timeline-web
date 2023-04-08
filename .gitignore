@@ -9,3 +9,5 @@ timeline/__pycache__
 timeline/migrations
 
 utils/settings.json
+
+env/
