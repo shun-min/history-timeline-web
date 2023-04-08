@@ -1,8 +1,11 @@
+from datetime import datetime
+import logging
+
 from django.http import Http404, HttpResponse
 from django.template import loader
 from django.shortcuts import render
 
-from .models import Event, Person
+from .models import Event, Organization, Person
 
 
 # Create your views here.
@@ -21,3 +24,24 @@ def detail(request, event_pk):
     except Event.DoesNotExist:
         raise Http404("Event does not exist")
     return render(request, "timeline/detail.html", {"event": event})
+
+
+def form(request):
+    return render(request, "timeline/form.html")
+
+
+def submit_entry(request):
+    data = request.POST
+    new_organization = None
+    new_event = Event.objects.create_event(name=data["event_name"])
+    if "organization" in data.keys():
+        new_organization = Organization.objects.create_entity(name=data["organization"])
+        new_organization.event_involved = new_event
+        new_organization.save()
+    if "person" in data.keys():
+        new_person = Person.objects.create_person(name=data["person"])
+        new_person.event_involved = new_event
+        if new_organization:
+            new_person.organization_involved = new_organization
+        new_person.save()
+    return HttpResponse(f"Created new event {new_event.name}")
