@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="styles.css"></link>
 </head>
 <body>
 <form action="{% url 'timeline:submit_entry'%}" method="post">
@@ -12,8 +13,12 @@
         <label>Name:</label>
         <input type="text" name="event_name">
         <br>
-        <label>Involved Person/Organization:</label>
-        <input type="text" name="person">
+            <label>Involved Organization:</label>
+            <input type="text" name="organization">
+        </br>
+        <br>
+            <label>Involved Person:</label>
+            <input type="text" name="person">
         </br>
     </fieldset>
     <input type="submit" value="Submit">
