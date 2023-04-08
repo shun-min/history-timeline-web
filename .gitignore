@@ -4,7 +4,10 @@ db.sqlite3
 .pg_service.conf
 .my_pgpass
 
+history-timeline/__pycache__
 timeline/__pycache__
 timeline/migrations
 
 utils/settings.json
+
+env/
