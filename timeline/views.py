@@ -14,7 +14,7 @@ def index(request):
     context = {
         "events": events
     }
-    template = loader.get_template("timeline/world-timeline.html")
+    template = loader.get_template("index.html")
     return HttpResponse(template.render(context, request))
 
 
