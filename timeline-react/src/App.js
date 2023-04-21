@@ -11,10 +11,6 @@ function App() {
   )
 }
 
-function TimelineEntry() {
-  const historic_events = new Map();
-  historic_events.set
-}
 
 function EventEntryForm() {
   return (

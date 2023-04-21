@@ -16,9 +16,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import (
+    include,
+    path,
+)
+from rest_framework import routers
+
+from timeline import views
+
+
+router = routers.DefaultRouter()
+router.register(r"events", views.EventViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('timeline/', include("timeline.urls")),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls',  namespace='rest_framework')),
+    path('timeline', include("timeline.urls")),
 ]
