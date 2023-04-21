@@ -1,9 +1,7 @@
 .idea/
 LICENSE
 db.sqlite3
-history-timeline/.pg_service.conf
-history-timeline/.my_pgpass
 
-utils/settings.json
+timeline-django/utils/
 
 env/
