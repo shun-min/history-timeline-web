@@ -1,12 +1,8 @@
 .idea/
 LICENSE
 db.sqlite3
-.pg_service.conf
-.my_pgpass
-
-history-timeline/__pycache__
-timeline/__pycache__
-timeline/migrations
+history-timeline/.pg_service.conf
+history-timeline/.my_pgpass
 
 utils/settings.json
 
