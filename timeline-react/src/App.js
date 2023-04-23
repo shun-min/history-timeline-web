@@ -1,12 +1,20 @@
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
+import ListEvents from './components/ListEvents';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      TimelineEntry.map() =>
-        <p>TimelineEntry.name</p>
+      <div className="App">
+        <ListEvents />
+        <Router>
+          <Routes>
+            <Route exact path="/" component={ListEvents} />
+          </Routes>
+        </Router>
+      </div>
     </>
   )
 }
