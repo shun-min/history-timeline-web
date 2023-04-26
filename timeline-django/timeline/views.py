@@ -4,8 +4,13 @@ import logging
 from django.http import Http404, HttpResponse
 from django.template import loader
 from django.shortcuts import render
+from rest_framework import (
+    viewsets,
+    permissions,
+)
 
 from .models import Event, Organization, Person
+from .serializers import EventSerializer
 
 
 # Create your views here.
@@ -18,6 +23,11 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all().order_by("id")
+    serializer_class = EventSerializer
+
+
 def detail(request, event_pk):
     try:
         event = Event.objects.get(pk=event_pk)
@@ -27,7 +37,10 @@ def detail(request, event_pk):
 
 
 def form(request):
-    return render(request, "timeline/form.html")
+    # return render(request, "timeline/form.html")
+    context = {}
+    template = loader.get_template("index.html")
+    return HttpResponse(template.render(context, request))
 
 
 def submit_entry(request):

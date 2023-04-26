@@ -46,9 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +61,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 ROOT_URLCONF = 'history-timeline.urls'
 
@@ -78,6 +90,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'history-timeline.wsgi.application'
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'http://localhost:8000',
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -90,7 +107,7 @@ DATABASES = {
         #     'service': 'timeline_service',
         #     'passfile': '.my_pgpass',
         # },
-        'NAME': json_data.get("NAME", ""),
+        'NAME': json_data.get("DBNAME", ""),
         'USER': json_data.get("USER", ""),
         'PASSWORD': json_data.get("PASSWORD", ""),
         'HOST': json_data.get("HOST", ""),
