@@ -9,11 +9,10 @@ function App() {
   return (
     <>
       <div className="App">
-        <ListEvents />
         <Router>
           <Routes>
-            <Route path="/" component={ListEvents} />
-            <Route path="details1/:id" component={ListEventsDetails} />
+            <Route path="/timeline" element={<ListEvents />} />
+            <Route path="/details/:id" element={<ListEventsDetails />} />
           </Routes>
         </Router>
       </div>

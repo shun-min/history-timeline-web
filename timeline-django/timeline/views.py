@@ -37,10 +37,7 @@ def detail(request, event_pk):
 
 
 def form(request):
-    # return render(request, "timeline/form.html")
-    context = {}
-    template = loader.get_template("index.html")
-    return HttpResponse(template.render(context, request))
+    return render(request, "timeline/form.html")
 
 
 def submit_entry(request):

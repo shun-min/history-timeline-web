@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ListEventDetails = async() => {
-    const [historyEvent, setHistoryEvent] = useState();
+    const [eventDetails, setEventDetails] = useState([]);
     const { id } = useParams();
 
+    console.log("!!!", id)
     const getDetails = async () => {
-        const response = await fetch(`http://localhost:8000/events/${id}`)
+        const cmd = `http://localhost:8000/events/${id}`
+        const response = await fetch(cmd)
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get details...");
@@ -17,7 +19,7 @@ const ListEventDetails = async() => {
         })
         .then((json) => {
             console.log(json);
-            setHistoryEvent(json);
+            setEventDetails(json);
         });
     }
 
@@ -26,10 +28,14 @@ const ListEventDetails = async() => {
     }, []) ;
 
     return (
-        <div>
-            <h3>Event Details</h3>
-            { historyEvent.name }
-        </div>
+        <>
+            <div>
+                <h3>Event Details</h3>
+                    { eventDetails.name }
+                    { eventDetails.date }
+                    { eventDetails.description }
+            </div>
+        </>
     );
 };
 

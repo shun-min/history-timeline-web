@@ -9,9 +9,8 @@ const ListEvents = () => {
             if (!response.ok) {
                 console.error("Can't get events...");
             } else {
-                console.log("HERE>>>>");
                 return response.json();
-            }
+            }       
         })
         .then((json) => {
             setHistoryEvents(json);
@@ -22,16 +21,16 @@ const ListEvents = () => {
     }, []) ;
 
     return (
-        <div>
-            Timeline
-            { historyEvents.map(
-                historyEvent =>
-                    <Link to="details1/6">ABC</Link>
-                    // <Link to={historyEvent.id}>{historyEvent.name}</Link>
-                    // <a href="http://localhost:8000/events/6">{historyEvent.name}</a>
-            )}
-        </div>
+        <>
+            <div>
+            {
+                historyEvents.map(historyEvent =>
+                    <Link to={`/details/${historyEvent.id}`}>{ historyEvent.name }</Link>
+                )
+            }
+            </div>
+        </>
     );
-};
+}
 
 export default ListEvents;

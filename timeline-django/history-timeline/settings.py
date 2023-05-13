@@ -90,10 +90,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'history-timeline.wsgi.application'
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-#     'http://localhost:8000',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+]
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
