@@ -18,14 +18,15 @@ const ListEvents = () => {
     }
     useEffect(() => {
         getEvents();
-    }, []) ;
+    }, []);
+
 
     return (
         <>
             <div>
             {
-                historyEvents.map(historyEvent =>
-                    <Link to={`/details/${historyEvent.id}`}>{ historyEvent.name }</Link>
+                historyEvents.map(historyEvent => 
+                    <div><Link to={`/details/${historyEvent.id}`}>{ historyEvent.name }</Link></div>
                 )
             }
             </div>
