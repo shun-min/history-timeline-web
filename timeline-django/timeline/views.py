@@ -10,7 +10,7 @@ from rest_framework import (
 )
 
 from .models import Event, Organization, Person
-from .serializers import EventSerializer
+from .serializers import EventSerializer, OrganizationSerializer, PersonSerializer
 
 
 # Create your views here.
@@ -26,6 +26,16 @@ def index(request):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all().order_by("id")
     serializer_class = EventSerializer
+
+
+class OrganizationViewSet(viewsets.ModelViewSet):
+    queryset = Organization.objects.all().order_by("id")
+    serializer_class = OrganizationSerializer
+
+
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all().order_by("id")
+    serializer_class = PersonSerializer
 
 
 def detail(request, event_pk):

@@ -5,9 +5,7 @@ const ListEventDetails = () => {
     const [eventDetails, setEventDetails] = useState({});
     const { id } = useParams();
     const getEventDetails = () => {
-        const cmd = `http://localhost:8000/events/${id}`
-        console.log(cmd)
-        const response = fetch(cmd)
+        fetch(`http://localhost:8000/api/events/${id}`)
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get details...");
