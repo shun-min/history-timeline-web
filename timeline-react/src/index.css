@@ -105,6 +105,11 @@ code {
 	position: absolute;
 }
 
+.tmln__item::before{
+	/* block-size: var(--bdw); */
+	writing-mode: vertical-lr;
+}
+
 /* Hide last line */
 .tmln:not(.tmln--hr) .tmln__item:last-child::before {
 	display: none;
@@ -116,7 +121,7 @@ code {
 
 .tmln__list {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	margin: 0;
 	padding-block: 0 var(--gap);
 	padding-inline: 0;
