@@ -29,6 +29,7 @@ router = routers.DefaultRouter()
 router.register(r"events", views.EventViewSet)
 router.register(r"organizations", views.OrganizationViewSet)
 router.register(r"persons", views.PersonViewSet)
+router.register(r"timelines", views.TimelineViewSet)
 
 
 urlpatterns = [

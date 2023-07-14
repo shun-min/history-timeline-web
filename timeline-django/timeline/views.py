@@ -9,8 +9,13 @@ from rest_framework import (
     permissions,
 )
 
-from .models import Event, Organization, Person
-from .serializers import EventSerializer, OrganizationSerializer, PersonSerializer
+from .models import Timeline, Event, Organization, Person
+from .serializers import (
+    TimelineSerializer,
+    EventSerializer,
+    OrganizationSerializer,
+    PersonSerializer,
+)
 
 
 # Create your views here.
@@ -21,6 +26,11 @@ def index(request):
     }
     template = loader.get_template("index.html")
     return HttpResponse(template.render(context, request))
+
+
+class TimelineViewSet(viewsets.ModelViewSet):
+    queryset = Timeline.objects.all().order_by("id")
+    serializer_class = TimelineSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):

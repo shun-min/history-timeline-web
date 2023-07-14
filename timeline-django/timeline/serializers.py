@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
-from .models import Event, Organization, Person
+from .models import Event, Organization, Person, Timeline
 
 
 class OrganizationSerializer(serializers.ModelSerializer):
@@ -25,3 +25,11 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ["id", "name", "date", "description", "persons_involved", "organizations_involved"]
+
+
+class TimelineSerializer(serializers.ModelSerializer):
+    events = EventSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Timeline
+        fields = ["id", "name", "description", "events"]

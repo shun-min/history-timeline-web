@@ -49,3 +49,20 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TimelineManager(models.Manager):
+    def create_event(self, name, date: Optional = None):
+        event = self.create(name=name, date=date)
+        return event
+
+
+class Timeline(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(null=True)
+    events = models.ManyToManyField(Event)
+
+    objects = TimelineManager()
+
+    def __str__(self):
+        return self.name

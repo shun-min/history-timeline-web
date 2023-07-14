@@ -1,3 +1,4 @@
+import '../index.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -21,23 +22,21 @@ const ListEvents = () => {
     }, []);
 
 
-    return (
-        <>
-            <div>
-            {
-                historyEvents.map(historyEvent => 
-                    <div><Link to={`/details/${historyEvent.id}`}>{ historyEvent.name }</Link></div>
-                )
-                // .then((historyEvent) => {
-                //     const persons = historyEvent.persons_involved;
-                //     persons.map(person => 
-                //         <div>{ person.name }</div>
-                //     )
-                // })
-            }
-            </div>
-        </>
-    );
+    return (<>
+        <div className='tmln tmln--box tmln--hr'>
+            <ul class="tmln__list">
+                {
+                    historyEvents.map(historyEvent => 
+                        <li class="tmln__item tmln__item--active">
+                            <div className='tmln__item-headline'>
+                                <Link to={`/details/${historyEvent.id}`}>{ historyEvent.name }</Link>
+                            </div>
+                        </li>
+                    )
+                }
+            </ul>
+        </div>
+    </>);
 }
 
 export default ListEvents;
