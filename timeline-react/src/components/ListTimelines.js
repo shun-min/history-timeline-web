@@ -24,19 +24,17 @@ const ListTimelines = () => {
 
 
     return (<>
-        <div className='tmln tmln--box tmln--hr'>
-            <ul class="tmln__list">
-                {
-                    timelines.map(timeline => 
-                        <div className='tmln__item-headline'>
-                            { timeline.name }
-                            <ul>
-                            <ListEvents></ListEvents>    
-                            </ul>
-                        </div>
-                    )
-                }
-            </ul>
+        <div>
+            {
+                timelines.map(timeline => 
+                    <div>
+                        { timeline.name }
+                        <ul>
+                        <ListEvents></ListEvents>    
+                        </ul>
+                    </div>
+                )
+            }
         </div>
     </>);
 }
