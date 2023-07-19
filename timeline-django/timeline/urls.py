@@ -1,10 +1,13 @@
 from . import views
+from .api import v1
 from django.urls import path
 
 app_name = "timeline"
 urlpatterns = [
     path('', views.index, name="index"),
-    path('<int:event_pk>', views.detail, name="detail"),
-    path('form', views.form, name="form"),
-    path('submit_entry', views.submit_entry, name="submit_entry"),
+    path(
+        'timeline/<int:timeline_id>/events',
+        v1.TimelineEvents,
+        name="get_events"
+    ),
 ]
