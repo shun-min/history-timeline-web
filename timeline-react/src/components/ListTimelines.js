@@ -7,7 +7,8 @@ import ListEvents from './ListEvents';
 const ListTimelines = () => {
     const [timelines, setTimelines] = useState([]);
     const getTimelines = async () => {
-        await fetch("http://localhost:8000/api/timelines")
+        await fetch("http://localhost:8000/router/timelines")
+        // await fetch("http://localhost:8000/api/timelines")
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get timeline...");

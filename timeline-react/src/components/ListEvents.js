@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ListEvents = () => {
     const [historyEvents, setHistoryEvents] = useState([]);
     const getEvents = async () => {
-        await fetch("http://localhost:8000/api/events")
+        await fetch("http://localhost:8000/router/events")
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get events...");
