@@ -18,11 +18,13 @@ from ..serializers import (
 
 
 class TimelineEvents(APIView):
-    def get_queryset(
+    def get(
         self,
-        timeline_id: int,
+        request,
+        timeline_id,
     ):
-        events = Event.objects.filter(timeline_id=timeline_id)
+        events = Event.objects.filter(timeline__id=timeline_id).values()
+        print()
         return Response(
             data=events,
             status=status.HTTP_200_OK

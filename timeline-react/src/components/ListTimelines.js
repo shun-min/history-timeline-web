@@ -8,7 +8,6 @@ const ListTimelines = () => {
     const [timelines, setTimelines] = useState([]);
     const getTimelines = async () => {
         await fetch("http://localhost:8000/router/timelines")
-        // await fetch("http://localhost:8000/api/timelines")
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get timeline...");
@@ -30,10 +29,14 @@ const ListTimelines = () => {
             {
                 timelines.map(timeline => 
                     <div>
-                        { timeline.name }
-                        <ul>
-                        <ListEvents></ListEvents>    
-                        </ul>
+                        <Link to={`/events/${timeline.id}`}>{ timeline.name }</Link>
+                        {/* <ListEvents></ListEvents>   */}
+                        {/* <ul>
+                            <li>
+                                <ListEvents></ListEvents>    
+                                <Link to={`/events/${timeline.id}`}></Link>
+                            </li>
+                        </ul> */}
                     </div>
                 )
             }

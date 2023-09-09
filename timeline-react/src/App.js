@@ -1,5 +1,6 @@
 import './App.css';
 import ListTimelines from './components/ListTimelines';
+import ListEvents from './components/ListEvents';
 import ListEventsDetails from './components/ListEventDetails';
 import AddEvent from './components/AddEvent';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -16,6 +17,7 @@ function App() {
                     {/* <SwitchLayoutMode></SwitchLayoutMode> */}
                     <Routes>
                         <Route path="/timeline" element={<ListTimelines />} />
+                        <Route path="/events/:timelineid" element={<ListEvents />} />
                         <Route path="/details/:id" element={<ListEventsDetails />} />
                         <Route path="/add_event" element={<AddEvent />} />
                     </Routes>
