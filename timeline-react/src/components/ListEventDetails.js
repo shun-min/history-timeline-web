@@ -5,7 +5,7 @@ const ListEventDetails = () => {
     const [eventDetails, setEventDetails] = useState({});
     const { id } = useParams();
     const getEventDetails = () => {
-        fetch(`http://localhost:8000/api/events/${id}`)
+        fetch(`http://localhost:8000/router/events/${id}`)
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get details...");

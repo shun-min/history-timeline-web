@@ -25,7 +25,7 @@ class PersonManager(models.Manager):
 
 class Person(models.Model):
     name = models.CharField(max_length=100)
-    organizations_involved = models.ManyToManyField(Organization)
+    organizations_involved = models.ManyToManyField(Organization, blank=True)
     objects = PersonManager()
 
     def __str__(self):
@@ -42,8 +42,8 @@ class Event(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateTimeField(null=True)
     description = models.TextField(null=True)
-    persons_involved = models.ManyToManyField(Person)
-    organizations_involved = models.ManyToManyField(Organization)
+    persons_involved = models.ManyToManyField(Person, blank=True)
+    organizations_involved = models.ManyToManyField(Organization, blank=True)
 
     objects = EventManager()
 
@@ -60,7 +60,7 @@ class TimelineManager(models.Manager):
 class Timeline(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True)
-    events = models.ManyToManyField(Event)
+    events = models.ManyToManyField(Event, blank=True)
 
     objects = TimelineManager()
 

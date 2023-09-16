@@ -1,11 +1,13 @@
 import '../index.css';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ListEvents = () => {
     const [historyEvents, setHistoryEvents] = useState([]);
+    const { timelineid } = useParams();
     const getEvents = async () => {
-        await fetch("http://localhost:8000/api/events")
+        console.log(timelineid)
+        await fetch(`http://localhost:8000/api/timeline/${timelineid}/events`)
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get events...");

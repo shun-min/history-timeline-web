@@ -34,7 +34,7 @@ router.register(r"timelines", views.TimelineViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('router/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls',  namespace='rest_framework')),
-    path('timeline/', include("timeline.urls")),
+    path('api/', include("timeline.urls")),
 ]

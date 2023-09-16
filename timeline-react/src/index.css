@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-.hitory-event-timeline {
-  
-}
-
 /**
  * timeline.css
  * @version 1.0.0
@@ -28,7 +24,7 @@ code {
 	--bdc: hsl(200, 40%, 60%);
 	--bdc-a: hsl(200, 40%, 40%);
 	--bdc-h: hsl(200, 30%, 90%);
-	--bgc: hsl(200, 40%, 80%);
+	/* --bgc: hsl(200, 40%, 80%); */
 	--bdrs: 0.25rem;
 	--bdw: 2px;
 	--bullet-bdrs: 50%;
@@ -57,8 +53,8 @@ code {
 	color: var(--c, currentColor);
 	font-family: var(--ff, ui-sans-serif, system-ui, sans-serif);
 	padding-block: var(--gap) 0;
-	padding-bottom: var(--gap); /* Safari */
-	padding-top: var(--gap); /* Safari */
+	/*padding-bottom: var(--gap); /* Safari */
+	/*padding-top: var(--gap); /* Safari */
 	width: var(--w, 100%);
 	-webkit-tap-highlight-color: transparent;
 }
@@ -106,8 +102,8 @@ code {
 }
 
 .tmln__item::before{
-	/* block-size: var(--bdw); */
-	writing-mode: vertical-lr;
+	block-size: var(--bdw);
+	/* writing-mode: vertical-lr; */
 }
 
 /* Hide last line */
@@ -181,7 +177,7 @@ Modifiers and States
 	flex-wrap: nowrap;
 	overflow-x: auto;
 	padding-block-start: var(--bullet-sz-a); /* Add room for box-shadow transition in horizontal mode */
-	padding-inline-start: var(--gap);
+	padding-inline-start: 6px;
 	scrollbar-width: none;
 	scroll-snap-type: x mandatory;
 }
@@ -249,7 +245,7 @@ Modifiers and States
 
 /* Item Box AND Horizontal */
 .tmln--box.tmln--hr .tmln__item {
-	--miw: var(--bi-miw);
+	/* --miw: var(--bi-miw); */
 	margin-block-end: 0;
 	margin-block-start: calc(var(--bullet-sz) + var(--gap));
 	margin-inline-start: 0;

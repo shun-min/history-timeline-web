@@ -1,4 +1,5 @@
 import '../index.css';
+import '../vertical-timeline.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ListEvents from './ListEvents';
@@ -6,7 +7,7 @@ import ListEvents from './ListEvents';
 const ListTimelines = () => {
     const [timelines, setTimelines] = useState([]);
     const getTimelines = async () => {
-        await fetch("http://localhost:8000/api/timelines")
+        await fetch("http://localhost:8000/router/timelines")
         .then((response) => {
             if (!response.ok) {
                 console.error("Can't get timeline...");
@@ -24,19 +25,21 @@ const ListTimelines = () => {
 
 
     return (<>
-        <div className='tmln tmln--box tmln--hr'>
-            <ul class="tmln__list">
-                {
-                    timelines.map(timeline => 
-                        <div className='tmln__item-headline'>
-                            { timeline.name }
-                            <ul>
-                            <ListEvents></ListEvents>    
-                            </ul>
-                        </div>
-                    )
-                }
-            </ul>
+        <div>
+            {
+                timelines.map(timeline => 
+                    <div>
+                        <Link to={`/events/${timeline.id}`}>{ timeline.name }</Link>
+                        {/* <ListEvents></ListEvents>   */}
+                        {/* <ul>
+                            <li>
+                                <ListEvents></ListEvents>    
+                                <Link to={`/events/${timeline.id}`}></Link>
+                            </li>
+                        </ul> */}
+                    </div>
+                )
+            }
         </div>
     </>);
 }
