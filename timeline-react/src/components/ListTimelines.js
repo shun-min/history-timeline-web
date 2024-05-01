@@ -30,13 +30,6 @@ const ListTimelines = () => {
                 timelines.map(timeline => 
                     <div>
                         <Link to={`/events/${timeline.id}`}>{ timeline.name }</Link>
-                        {/* <ListEvents></ListEvents>   */}
-                        {/* <ul>
-                            <li>
-                                <ListEvents></ListEvents>    
-                                <Link to={`/events/${timeline.id}`}></Link>
-                            </li>
-                        </ul> */}
                     </div>
                 )
             }
