@@ -6,7 +6,6 @@ const ListEvents = () => {
     const [historyEvents, setHistoryEvents] = useState([]);
     const { timelineid } = useParams();
     const getEvents = async () => {
-        console.log(timelineid)
         await fetch(`http://localhost:8000/api/timeline/${timelineid}/events`)
         .then((response) => {
             if (!response.ok) {
@@ -31,7 +30,9 @@ const ListEvents = () => {
                     historyEvents.map(historyEvent => 
                         <li class="tmln__item tmln__item--active">
                             <div className='tmln__item-headline'>
-                                <Link to={`/details/${historyEvent.id}`}>{ historyEvent.name }</Link>
+                                <Link to={`/details/${historyEvent.id}`}>
+                                    { historyEvent.name }
+                                </Link>
                             </div>
                         </li>
                     )
